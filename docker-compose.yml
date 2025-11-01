@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  admin:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://api:3001
+      NODE_ENV: production
+    depends_on:
+      - api
+    networks:
+      - al-qattawi
+
+  api:
+    image: al-qattawi-api:latest
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: postgresql://user:password@db:5432/alqattawi
+      JWT_SECRET: your-secret-key
+    depends_on:
+      - db
+    networks:
+      - al-qattawi
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: alqattawi
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - al-qattawi
+
+volumes:
+  postgres_data:
+
+networks:
+  al-qattawi:
+    driver: bridge
