@@ -156,8 +156,8 @@ export function ServicesSection() {
     "provider": {
       "@type": "Organization",
       "name": "القطاوي للدواجن",
-      "url": "https://alqatawi.com",
-      "logo": "https://alqatawi.com/logo.png"
+      "url": "https://alqattawi-poultry.vercel.app/",
+      "logo": "https://alqattawi-poultry.vercel.app/header_image.webp"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -168,7 +168,7 @@ export function ServicesSection() {
           "@type": "Service",
           "name": service.title,
           "description": service.description,
-          "url": `https://alqatawi.com${service.url}`,
+          "url": `https://https://alqattawi-poultry.vercel.app/${service.url}`,
         },
       })),
     },

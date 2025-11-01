@@ -34,11 +34,11 @@ export const metadata = {
     title: "القطاوي للدواجن | أسعار الكتاكيت اليوم",
     description:
       "تابع أحدث أسعار الكتاكيت في مصر من القطاوي للدواجن. خدماتنا تشمل بيع الكتاكيت، الأدوية البيطرية، والتحصينات بدعم فني متكامل.",
-    url: "https://alqattawi-poultry.com",
+    url: "https://alqattawi-poultry.vercel.app/",
     siteName: "القطاوي للدواجن",
     images: [
       {
-        url: "https://alqattawi-poultry.com/images/hero-og.jpg",
+        url: "https://alqattawi-poultry.vercel.app/images/hero-og.jpg",
         width: 1200,
         height: 630,
         alt: "القطاوي للدواجن - أسعار الكتاكيت اليوم",

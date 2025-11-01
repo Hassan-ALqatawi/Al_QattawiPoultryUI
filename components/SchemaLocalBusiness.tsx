@@ -4,8 +4,8 @@ export default function SchemaLocalBusiness() {
     "@type": "LocalBusiness",
     "name": "القطاوي للدواجن",
     "image": "https://alqattawi-poultry.com/images/logo.png",
-    "@id": "https://alqattawi-poultry.com",
-    "url": "https://alqattawi-poultry.com",
+    "@id": "https://alqattawi-poultry.vercel.app/",
+    "url": "https://alqattawi-poultry.vercel.app/",
     "telephone": "+201062790104", // ضع رقم الهاتف الحقيقي هنا
     "priceRange": "متوسط",
     "address": {

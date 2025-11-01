@@ -1,6 +1,6 @@
 // components/SchemaSite.tsx
 export default function SchemaSite() {
-  const baseUrl = "https://alqattawi-poultry.com"; // غيّر إلى الدومين الحقيقي إن اختلف
+  const baseUrl = "https://alqattawi-poultry.vercel.app/"; // غيّر إلى الدومين الحقيقي إن اختلف
 
   const jsonLd = {
     "@context": "https://schema.org",

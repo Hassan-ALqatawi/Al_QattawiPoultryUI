@@ -203,7 +203,7 @@ export function Footer() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "القطاوي للدواجن",
-    url: "https://www.alqatawidp.com", // ضع رابط موقعك الفعلي هنا
+    url: "https://alqattawi-poultry.vercel.app/", // ضع رابط موقعك الفعلي هنا
     address: address,
     contactPoint: [
       {

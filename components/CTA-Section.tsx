@@ -122,7 +122,7 @@ export function ContactCTA() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "مؤسسة القطاوي للدواجن",
-    url: "https://www.alqatawidp.com", // ضع رابط موقعك الفعلي هنا
+    url: "https://alqattawi-poultry.vercel.app/", // ضع رابط موقعك الفعلي هنا
     contactPoint: contactMethods.map((method) => ({
       "@type": "ContactPoint",
       contactType: method.name,
