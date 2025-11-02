@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/breeding-guide`,
+      url: `${baseUrl}/chick-guidelines`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
