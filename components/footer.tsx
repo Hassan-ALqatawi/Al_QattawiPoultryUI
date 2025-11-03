@@ -177,14 +177,36 @@
 import Link from "next/link"
 import { motion, Variants } from "framer-motion"
 import { Phone, MapPin } from "lucide-react"
-import { FaWhatsapp, FaFacebookMessenger } from "react-icons/fa"
+import { FaWhatsapp, FaFacebookMessenger, FaPhone } from "react-icons/fa"
 import { Fragment } from "react"
 
 export function Footer() {
   const phone = process.env.NEXT_PUBLIC_PHONE
   const whatsapp = process.env.NEXT_PUBLIC_WHATSAPP
-  const messenger = process.env.NEXT_PUBLIC_MESSENGER
+  const messenger = process.env.NEXT_PUBLIC_MESSENGER || "https://m.me/100076990531364"
   const address = process.env.NEXT_PUBLIC_ADDRESS
+
+
+
+   const getWhatsAppLink = () => {
+    const number = process.env.NEXT_PUBLIC_WHATSAPP || "201062790104";
+    if (typeof window !== "undefined" && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      return `https://wa.me/${number}?text=${encodeURIComponent("مرحبًا، أود الاستفسار عن خدماتكم.")}`;
+    }
+    return `https://web.whatsapp.com/send?phone=${number}&text=${encodeURIComponent("مرحبًا، أود الاستفسار عن خدماتكم.")}`;
+  };
+
+  const getPhoneLink = () => {
+    const number = process.env.NEXT_PUBLIC_PHONE || "01068662069";
+    if (typeof window !== "undefined" && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      // على الهاتف: يفتح تطبيق الاتصال مباشرة
+      return `tel:${number}`;
+    }
+    // على الكمبيوتر: يعرض نافذة لنسخ الرقم أو يعيد توجيه المستخدم مثلًا
+    return `javascript:alert("📞 يمكنك الاتصال بنا على الرقم: ${number}");`;
+  };
+
+
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 20 },
@@ -267,7 +289,7 @@ export function Footer() {
                 </li>
                 <li>
                   <Link href={`/chick-guidelines`} className="hover:translate-x-1 inline-block transition-transform">
-                    دليل الكتاكيت
+                    دليل التربية
                   </Link>
                 </li>
                 <li>
@@ -330,12 +352,20 @@ export function Footer() {
                   <span>{address}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <Phone className="w-5 h-5 text-white/90" aria-hidden="true" />
-                  <span>{phone}</span>
+                  
+                  <a
+                    href={getPhoneLink()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="تواصل معنا عبر الهاتف"
+                    className="flex items-center gap-2 hover:text-green-400 transition"
+                  >
+                   <FaPhone className="w-5 h-5 text-white/90" />{phone}
+                  </a>
                 </li>
                 <li>
                   <a
-                    href={whatsapp}
+                    href={getWhatsAppLink()}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="تواصل معنا عبر واتساب"

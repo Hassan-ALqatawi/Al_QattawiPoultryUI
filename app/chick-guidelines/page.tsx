@@ -1,381 +1,3 @@
-// "use client"
-
-// import { Header } from "@/components/header"
-// import { Footer } from "@/components/footer"
-// import { PageHeader } from "@/components/page-header"
-// import { FAQAccordion } from "@/components/faq-accordion"
-// import { useLanguage } from "@/lib/language-context"
-// import { usePrintOrPdf } from "@/lib/use-print-pdf"
-// import Link from "next/link"
-// import { Download, Phone } from "lucide-react"
-
-// export default function ChickGuidelinesPage() {
-//   const { language } = useLanguage()
-//   const { downloadPdf } = usePrintOrPdf()
-
-//   const isArabic = language === "ar"
-
-//   // Daily plan data - 45 days
-//   const dailyPlan = [
-//     {
-//       day: 1,
-//       stage: "حضانة",
-//       temp: "34–35",
-//       feed: "ماء + محلول سكري + فيتامين C",
-//       vaccination: "—",
-//       notes: "تأكد من التدفئة الجيدة، راقب توزيع الكتاكيت",
-//     },
-//     {
-//       day: 2,
-//       stage: "حضانة",
-//       temp: "34",
-//       feed: "بادئ (Starter 23%)",
-//       vaccination: "فيتامين AD3E",
-//       notes: "تأكد أن الكتاكيت بدأت تأكل وتشرب",
-//     },
-//     { day: 3, stage: "حضانة", temp: "33", feed: "بادئ", vaccination: "—", notes: "نظف المساقي والمعالف" },
-//     {
-//       day: 4,
-//       stage: "حضانة",
-//       temp: "33",
-//       feed: "بادئ",
-//       vaccination: "فيتامينات + أملاح معدنية",
-//       notes: "تأكد من جفاف الفرشة",
-//     },
-//     { day: 5, stage: "حضانة", temp: "32", feed: "بادئ", vaccination: "—", notes: "لاحظ الحركة والنشاط" },
-//     { day: 6, stage: "حضانة", temp: "32", feed: "بادئ", vaccination: "—", notes: "احسب النفوق وسجله" },
-//     {
-//       day: 7,
-//       stage: "حضانة",
-//       temp: "32",
-//       feed: "بادئ",
-//       vaccination: "تحصين نيوكاسل (لاسوتا) بالماء",
-//       notes: "أغلق التهوية أثناء التحصين",
-//     },
-//     {
-//       day: 8,
-//       stage: "حضانة",
-//       temp: "31",
-//       feed: "بادئ",
-//       vaccination: "فيتامين C بعد التحصين",
-//       notes: "افتح التهوية بعد ساعتين من التحصين",
-//     },
-//     { day: 9, stage: "حضانة", temp: "31", feed: "بادئ", vaccination: "—", notes: "أضف نشارة جديدة إن لزم" },
-//     { day: 10, stage: "حضانة", temp: "30", feed: "بادئ", vaccination: "—", notes: "راقب استهلاك العلف والماء" },
-//     { day: 11, stage: "حضانة", temp: "30", feed: "بادئ", vaccination: "فيتامين AD3E", notes: "الفحص العام للصحة" },
-//     { day: 12, stage: "حضانة", temp: "29", feed: "بادئ", vaccination: "—", notes: "تأكد من توزيع الحرارة" },
-//     { day: 13, stage: "حضانة", temp: "29", feed: "بادئ", vaccination: "—", notes: "قلل الحرارة تدريجيًا" },
-//     {
-//       day: 14,
-//       stage: "حضانة",
-//       temp: "29",
-//       feed: "بادئ",
-//       vaccination: "تحصين جمبورو",
-//       notes: "بالماء النظيف الخالي من الكلور",
-//     },
-//     { day: 15, stage: "حضانة", temp: "28", feed: "بادئ", vaccination: "فيتامين C", notes: "بعد التحصين مباشرة" },
-//     { day: 16, stage: "حضانة", temp: "28", feed: "بادئ", vaccination: "—", notes: "التهوية الجيدة ضرورية" },
-//     { day: 17, stage: "حضانة", temp: "28", feed: "بادئ", vaccination: "—", notes: "نظف المعالف جيدًا" },
-//     {
-//       day: 18,
-//       stage: "حضانة",
-//       temp: "27",
-//       feed: "بادئ",
-//       vaccination: "تحصين نيوكاسل (لاسوتا)",
-//       notes: "بالماء النظيف",
-//     },
-//     { day: 19, stage: "حضانة", temp: "27", feed: "بادئ", vaccination: "—", notes: "أضف فيتامينات في اليوم التالي" },
-//     { day: 20, stage: "حضانة", temp: "27", feed: "بادئ", vaccination: "فيتامين AD3E", notes: "نهاية مرحلة الحضانة" },
-//     {
-//       day: 21,
-//       stage: "نمو",
-//       temp: "26",
-//       feed: "نامي (Grower 21%)",
-//       vaccination: "—",
-//       notes: "قلل الحرارة إلى 26 ووسع المساحة",
-//     },
-//     { day: 22, stage: "نمو", temp: "26", feed: "نامي", vaccination: "—", notes: "راقب وزن العينة" },
-//     { day: 23, stage: "نمو", temp: "25", feed: "نامي", vaccination: "فيتامينات", notes: "مرة أسبوعيًا" },
-//     { day: 24, stage: "نمو", temp: "25", feed: "نامي", vaccination: "—", notes: "تهوية قوية بلا تيار هواء مباشر" },
-//     { day: 25, stage: "نمو", temp: "25", feed: "نامي", vaccination: "—", notes: "نظافة يومية" },
-//     { day: 26, stage: "نمو", temp: "25", feed: "نامي", vaccination: "—", notes: "وزن عينة للتقييم" },
-//     { day: 27, stage: "نمو", temp: "24", feed: "نامي", vaccination: "—", notes: "استقرار الحرارة" },
-//     { day: 28, stage: "نمو", temp: "24", feed: "نامي", vaccination: "تحصين جمبورو", notes: "بالماء" },
-//     { day: 29, stage: "نمو", temp: "24", feed: "نامي", vaccination: "فيتامين C", notes: "بعد التحصين" },
-//     { day: 30, stage: "نمو", temp: "23", feed: "نامي", vaccination: "—", notes: "فحص الريش والنشاط" },
-//     { day: 31, stage: "نمو", temp: "23", feed: "نامي", vaccination: "تحصين نيوكاسل", notes: "بالماء" },
-//     { day: 32, stage: "نمو", temp: "23", feed: "نامي", vaccination: "—", notes: "نهاية مرحلة النمو" },
-//     {
-//       day: 33,
-//       stage: "تسمين",
-//       temp: "22",
-//       feed: "ناهي (Finisher 19%)",
-//       vaccination: "—",
-//       notes: "تغيير العلف تدريجيًا على 3 أيام",
-//     },
-//     { day: 34, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "راقب استهلاك العلف" },
-//     { day: 35, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "فيتامينات", notes: "أسبوعية" },
-//     { day: 36, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "تأكد من التهوية" },
-//     { day: 37, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "راقب الوزن" },
-//     { day: 38, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "قلل الضوء قليلًا" },
-//     { day: 39, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "جهّز مكان البيع" },
-//     { day: 40, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "فيتامين AD3E", notes: "لتحسين المناعة" },
-//     { day: 41, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "وزن عينة جديدة" },
-//     { day: 42, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "راقب النفوق" },
-//     { day: 43, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "التحضير للنقل" },
-//     { day: 44, stage: "تسمين", temp: "22", feed: "ناهي", vaccination: "—", notes: "أوقف العلف قبل التسويق بـ12 ساعة" },
-//     {
-//       day: 45,
-//       stage: "تسويق",
-//       temp: "—",
-//       feed: "—",
-//       vaccination: "—",
-//       notes: "التسويق 🎯 (الوزن المتوقع 1.8–2.2 كجم)",
-//     },
-//   ]
-
-//   const stages = [
-//     {
-//       title: "الحضانة (0–21 يوم)",
-//       description: "رعاية مكثفة — تدفئة، تحصين، تغذية بادئة",
-//       details: ["درجة حرارة: 34–27°م", "علف بادئ 23% بروتين", "تحصينات: نيوكاسل وجمبورو", "مراقبة مستمرة للصحة"],
-//     },
-//     {
-//       title: "النمو (22–32 يوم)",
-//       description: "بناء جسم وريش، ضبط حرارة وتهوية",
-//       details: ["درجة حرارة: 26–23°م", "علف نامي 21% بروتين", "توسيع المساحة تدريجيًا", "تحصينات إضافية"],
-//     },
-//     {
-//       title: "التسمين والتسويق (33–45 يوم)",
-//       description: "تقليل البروتين تدريجيًا، تحسين تحويل العلف",
-//       details: ["درجة حرارة: 22°م", "علف ناهي 19% بروتين", "تحضير للتسويق", "الوزن المتوقع: 1.8–2.2 كجم"],
-//     },
-//   ]
-
-//   const quickStats = [
-//     { label: "النفوق المستهدف", value: "أقل من 5%" },
-//     { label: "الوزن عند 4 أسابيع", value: "800–1000 جرام" },
-//     { label: "الوزن عند 7 أسابيع", value: "1.8–2.2 كجم" },
-//     { label: "بروتين البادئ", value: "22–23%" },
-//     { label: "بروتين النامي", value: "20–21%" },
-//     { label: "بروتين الناهي", value: "18–19%" },
-//   ]
-
-//   const faqItems = [
-//     {
-//       question: "متى يجب استدعاء الطبيب البيطري؟",
-//       answer:
-//         "عند زيادة النفوق عن 3% خلال أي أسبوع، أو ظهور أعراض تنفسية أو كحة أو خمول عام. كما يجب استشارة الطبيب عند ملاحظة أي تغيير غير طبيعي في سلوك الكتاكيت.",
-//     },
-//     {
-//       question: "هل يمكن تقليل البروتين لتوفير التكلفة؟",
-//       answer:
-//         "لا تقلل البروتين في مرحلة الحضانة؛ يمكن التعديل في مرحلة التسمين تدريجيًا لكن باعتدال. تقليل البروتين بشكل كبير قد يؤثر على النمو والأداء الإنتاجي.",
-//     },
-//     {
-//       question: "ما أفضل عمر للتسويق؟",
-//       answer:
-//         "عادة بين 42–49 يومًا حسب السلالة والسوق المستهدف؛ الوزن المتوقع 1.8–2.2 كجم عند 45 يومًا. يمكن تأخير التسويق قليلًا للحصول على وزن أكبر.",
-//     },
-//     {
-//       question: "كيف أراقب وزن الكتاكيت؟",
-//       answer:
-//         "وزن عينة من 30 كتكوتًا أسبوعيًا لمراقبة الأداء. قارن الوزن بالمعايير المتوقعة في الجدول اليومي. إذا كان الوزن أقل من المتوقع، راجع التغذية والصحة.",
-//     },
-//     {
-//       question: "ما أهمية التهوية الجيدة؟",
-//       answer:
-//         "التهوية الجيدة ضرورية لإزالة الرطوبة والغازات الضارة وتوفير هواء نقي. تهوية مستمرة لكن دون تيارات هوائية مباشرة على الكتاكيت. سوء التهوية يزيد من الأمراض التنفسية.",
-//     },
-//   ]
-
-//   return (
-//     <>
-//       <Header />
-//       <PageHeader title="دليل عملي لتربية الكتاكيت" subtitle="45 يومًا خطوة بخطوة من الحضانة إلى التسويق" />
-
-//       <main className="py-16 bg-background" id="guidelines-content">
-//         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-//           {/* Hero Section */}
-//           <section className="mb-16 animate-fade-in-up">
-//             <div className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl border border-primary/20 p-8 md:p-12">
-//               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-//                 دليل عملي لتربية الكتاكيت بطريقة صحيحة
-//               </h1>
-//               <p className="text-lg text-foreground/70 mb-8 leading-relaxed">
-//                 هذا الدليل العملي يقدّم خطة يومية كاملة لمدة 45 يومًا لتربية الكتاكيت (الدجاج اللاحم) بطريقة صحيحة وآمنة.
-//                 يتضمن الدليل درجات الحرارة، أنواع الأعلاف، جدول التحصين، الإرشادات اليومية، ونصائح عملية لتحسين الوزن
-//                 وتقليل النفوق. صالح للمزارع الصغيرة والمتوسطة.
-//               </p>
-//               <div className="flex flex-col sm:flex-row gap-4">
-//                 <button
-//                   onClick={downloadPdf}
-//                   className="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition font-semibold"
-//                 >
-//                   <Download className="w-5 h-5" />
-//                   حفظ كملف PDF
-//                 </button>
-//                 <Link
-//                   href="/contact"
-//                   className="flex items-center justify-center gap-2 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/90 transition font-semibold"
-//                 >
-//                   <Phone className="w-5 h-5" />
-//                   اتصل بخبير
-//                 </Link>
-//               </div>
-//             </div>
-//           </section>
-
-//           {/* Quick Stats */}
-//           <section className="mb-16">
-//             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">الإحصائيات السريعة</h2>
-//             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-//               {quickStats.map((stat, index) => (
-//                 <div
-//                   key={index}
-//                   className="bg-card rounded-xl border border-border p-6 text-center hover:shadow-lg transition-shadow animate-scale-in"
-//                   style={{ animationDelay: `${index * 0.1}s` }}
-//                 >
-//                   <p className="text-foreground/70 mb-2">{stat.label}</p>
-//                   <p className="text-3xl font-bold text-primary">{stat.value}</p>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-
-//           {/* Stages Section */}
-//           <section className="mb-16">
-//             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">مراحل التربية</h2>
-//             <div className="grid md:grid-cols-3 gap-6">
-//               {stages.map((stage, index) => (
-//                 <div
-//                   key={index}
-//                   className="bg-card rounded-xl border border-border p-8 hover:shadow-lg transition-all hover:border-primary/50 animate-slide-in-right"
-//                   style={{ animationDelay: `${index * 0.15}s` }}
-//                 >
-//                   <h3 className="text-2xl font-bold text-primary mb-3">{stage.title}</h3>
-//                   <p className="text-foreground/70 mb-6">{stage.description}</p>
-//                   <ul className="space-y-3">
-//                     {stage.details.map((detail, i) => (
-//                       <li key={i} className="flex items-start gap-3">
-//                         <span className="text-primary font-bold mt-1">✓</span>
-//                         <span className="text-foreground/70">{detail}</span>
-//                       </li>
-//                     ))}
-//                   </ul>
-//                 </div>
-//               ))}
-//             </div>
-//           </section>
-
-//           {/* Daily Plan Table */}
-//           <section className="mb-16">
-//             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">الجدول اليومي الكامل (45 يوم)</h2>
-//             <div className="overflow-x-auto rounded-xl border border-border">
-//               <table className="w-full text-sm">
-//                 <thead>
-//                   <tr className="bg-primary text-primary-foreground">
-//                     <th className="px-4 py-3 text-right">اليوم</th>
-//                     <th className="px-4 py-3 text-right">المرحلة</th>
-//                     <th className="px-4 py-3 text-right">درجة الحرارة</th>
-//                     <th className="px-4 py-3 text-right">العلف</th>
-//                     <th className="px-4 py-3 text-right">التحصين</th>
-//                     <th className="px-4 py-3 text-right">ملاحظات</th>
-//                   </tr>
-//                 </thead>
-//                 <tbody>
-//                   {dailyPlan.map((row, index) => (
-//                     <tr key={index} className={index % 2 === 0 ? "bg-muted/30" : "bg-background"}>
-//                       <td className="px-4 py-3 font-semibold text-foreground">{row.day}</td>
-//                       <td className="px-4 py-3 text-foreground/70">{row.stage}</td>
-//                       <td className="px-4 py-3 text-foreground/70">{row.temp}</td>
-//                       <td className="px-4 py-3 text-foreground/70">{row.feed}</td>
-//                       <td className="px-4 py-3 text-foreground/70">{row.vaccination}</td>
-//                       <td className="px-4 py-3 text-foreground/70">{row.notes}</td>
-//                     </tr>
-//                   ))}
-//                 </tbody>
-//               </table>
-//             </div>
-//           </section>
-
-//           {/* Expert Tips */}
-//           <section className="mb-16">
-//             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">نصائح الخبراء</h2>
-//             <div className="grid md:grid-cols-2 gap-6">
-//               <div className="bg-card rounded-xl border border-border p-8 hover:shadow-lg transition-shadow">
-//                 <h3 className="text-xl font-bold text-primary mb-4">🌡️ الحرارة</h3>
-//                 <p className="text-foreground/70">
-//                   استخدم مقياس حرارة أرضي داخل العنبر وراقب السلوك (تجمع تحت الدفاية = برد، تباعد = حرارة مرتفعة).
-//                 </p>
-//               </div>
-//               <div className="bg-card rounded-xl border border-border p-8 hover:shadow-lg transition-shadow">
-//                 <h3 className="text-xl font-bold text-primary mb-4">💧 المياه</h3>
-//                 <p className="text-foreground/70">
-//                   الماء النظيف دائمًا — لا تترك ماءًا معلقًا لفترات طويلة. استخدم معقمات الماء عند اللزوم.
-//                 </p>
-//               </div>
-//               <div className="bg-card rounded-xl border border-border p-8 hover:shadow-lg transition-shadow">
-//                 <h3 className="text-xl font-bold text-primary mb-4">💨 التهوية</h3>
-//                 <p className="text-foreground/70">
-//                   تهوية مستمرة لكن دون تيارات هوائية مباشرة على الكتاكيت. سوء التهوية يزيد من الأمراض التنفسية.
-//                 </p>
-//               </div>
-//               <div className="bg-card rounded-xl border border-border p-8 hover:shadow-lg transition-shadow">
-//                 <h3 className="text-xl font-bold text-primary mb-4">🧹 النظافة</h3>
-//                 <p className="text-foreground/70">
-//                   تغيير الفرشة عند الرطوبة، غسل وتعقيم المعالف والمساقي أسبوعيًا. النظافة تقلل الأمراض.
-//                 </p>
-//               </div>
-//               <div className="bg-card rounded-xl border border-border p-8 hover:shadow-lg transition-shadow">
-//                 <h3 className="text-xl font-bold text-primary mb-4">🔒 العزل</h3>
-//                 <p className="text-foreground/70">
-//                   لا تخلط أعمارًا مختلفة معًا. العزل يمنع انتشار الأمراض ويحسن الأداء الإنتاجي.
-//                 </p>
-//               </div>
-//               <div className="bg-card rounded-xl border border-border p-8 hover:shadow-lg transition-shadow">
-//                 <h3 className="text-xl font-bold text-primary mb-4">⚠️ الطوارئ</h3>
-//                 <p className="text-foreground/70">احتفظ بمصدر حرارة احتياطي ومجموعة إسعافات أولية وبيطري للاستشارة.</p>
-//               </div>
-//             </div>
-//           </section>
-
-//           {/* FAQ Section */}
-//           <section className="mb-16">
-//             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">الأسئلة الشائعة</h2>
-//             <FAQAccordion items={faqItems} />
-//           </section>
-
-//           {/* CTA Section */}
-//           <section className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl border border-primary/20 p-8 md:p-12 text-center">
-//             <h2 className="text-3xl font-bold text-foreground mb-6">هل تحتاج إلى مساعدة إضافية؟</h2>
-//             <p className="text-lg text-foreground/70 mb-8">
-//               فريقنا المتخصص جاهز لمساعدتك في أي استفسار أو مشكلة تتعلق بتربية الكتاكيت.
-//             </p>
-//             <Link
-//               href="/contact"
-//               className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition font-semibold"
-//             >
-//               <Phone className="w-5 h-5" />
-//               اتصل بنا الآن
-//             </Link>
-//           </section>
-//         </div>
-//       </main>
-
-//       <Footer />
-//     </>
-//   )
-// }
-
-
-
-
-
-
-
-
-
 
 "use client"
 
@@ -617,6 +239,15 @@ export default function ChickGuidelinesPage() {
   const profitPerChick = +(expectedProfit / chicks).toFixed(2)
 
   // ---------- render ----------
+
+const getWhatsAppLink = () => {
+    const number = process.env.NEXT_PUBLIC_WHATSAPP || "201062790104";
+    if (typeof window !== "undefined" && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      return `https://wa.me/${number}?text=${encodeURIComponent("مرحبًا، أود الاستفسار عن خدماتكم.")}`;
+    }
+    return `https://web.whatsapp.com/send?phone=${number}&text=${encodeURIComponent("مرحبًا، أود الاستفسار عن خدماتكم.")}`;
+  };
+
   return (
     <>
       <Header />
@@ -640,7 +271,7 @@ export default function ChickGuidelinesPage() {
                 <div className="flex flex-wrap gap-3 justify-center mt-10">
                   
                   <a
-                    href={`${process.env.NEXT_PUBLIC_WHATSAPP}`}
+                    href={getWhatsAppLink()}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-500 text-white font-semibold hover:shadow-lg transition"
@@ -809,7 +440,7 @@ export default function ChickGuidelinesPage() {
               <p className="text-foreground/70 mb-4">{"أرسل لنا بيانات مزرعتك (عدد طيور، نظام تربية، ميزانية) وسنعد خطة مفصّلة."}</p>
 
               <div className="flex items-center justify-center gap-3">
-                <a href={`${process.env.NEXT_PUBLIC_WHATSAPP}`} target="_blank" rel="noreferrer" className="inline-flex gap-2 items-center px-5 py-3 rounded-lg bg-green-500 text-white font-semibold">
+                <a href={getWhatsAppLink()} target="_blank" rel="noreferrer" className="inline-flex gap-2 items-center px-5 py-3 rounded-lg bg-green-500 text-white font-semibold">
                   <FaWhatsapp className="w-4 h-4" /> {"تواصل عبر واتساب"}
                 </a>
 

@@ -5,28 +5,44 @@
 import { FaPhoneAlt, FaWhatsapp, FaFacebookMessenger, FaMapMarkerAlt } from "react-icons/fa"
 
 export function ContactMethods() {
-  
+  const getWhatsAppLink = () => {
+    const number = process.env.NEXT_PUBLIC_WHATSAPP || "201062790104";
+    if (typeof window !== "undefined" && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      return `https://wa.me/${number}?text=${encodeURIComponent("مرحبًا، أود الاستفسار عن خدماتكم.")}`;
+    }
+    return `https://web.whatsapp.com/send?phone=${number}&text=${encodeURIComponent("مرحبًا، أود الاستفسار عن خدماتكم.")}`;
+  };
+
+  const getPhoneLink = () => {
+    const number = process.env.NEXT_PUBLIC_PHONE || "01068662069";
+    if (typeof window !== "undefined" && /Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      // على الهاتف: يفتح تطبيق الاتصال مباشرة
+      return `tel:${number}`;
+    }
+    // على الكمبيوتر: يعرض نافذة لنسخ الرقم أو يعيد توجيه المستخدم مثلًا
+    return `javascript:alert("📞 يمكنك الاتصال بنا على الرقم: ${number}");`;
+  };
   
   const methods = [
     {
       icon: <FaPhoneAlt className="text-primary" />,
       title: "الهاتف",
       value: "01068662069 - 01062790104",
-      link: `tel:${process.env.NEXT_PUBLIC_PHONE}`,
+      link: getPhoneLink(),
       description:  "اتصل بنا مباشرة",
     },
     {
       icon: <FaWhatsapp className="text-green-500" />,
       title: "واتساب",
       value: "01062790104",
-      link: process.env.NEXT_PUBLIC_WHATSAPP,
+      link: getWhatsAppLink(),
       description: "تواصل عبر واتساب" ,
     },
     {
       icon: <FaFacebookMessenger className="text-blue-500" />,
       title: "مسنجر" ,
       value: "القطاوي للدواجن",
-      link: process.env.NEXT_PUBLIC_MESSENGER,
+      link: process.env.NEXT_PUBLIC_MESSENGER || "https://m.me/100076990531364",
       description: "تحدث معنا عبر مسنجر" ,
     },
     {

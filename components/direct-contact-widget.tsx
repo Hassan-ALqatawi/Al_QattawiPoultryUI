@@ -13,19 +13,19 @@ export function DirectContactWidget() {
     {
       name: "WhatsApp",
       icon: "💬",
-      link: "https://wa.me/966XXXXXXXXX",
+      link: "https://wa.me/201062790104",
       color: "bg-green-500",
     },
     {
       name: "Messenger",
       icon: "📱",
-      link: "https://m.me/alqattawi",
+      link: "https://m.me/100076990531364",
       color: "bg-blue-500",
     },
     {
       name: "Phone",
       icon: "☎️",
-      link: "tel:+966XXXXXXXXX",
+      link: "tel:+201068662069",
       color: "bg-orange-500",
     },
   ]

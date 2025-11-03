@@ -109,7 +109,7 @@ export function Header() {
               href="/chick-guidelines"
               className={getMobileLinkClasses("/chick-guidelines")}
             >
-              دليل الكتاكيت
+              دليل التربية
             </Link>
             <Link href="/about" className={getMobileLinkClasses("/about")}>
               من نحن
